@@ -9,12 +9,12 @@ class DrinkCard: Card() {
 
     init {
         this.generateSips()
-        this.chooseDrinker()
+        this.decideDrinkee()
 }
     private fun generateSips() {
         this.sips = (2..6).shuffled().first()
     }
-    private fun chooseDrinker(){
+    private fun decideDrinkee(){
       val goodOrBad = (1..2).shuffled().first()
 
         if (goodOrBad == 1) {
