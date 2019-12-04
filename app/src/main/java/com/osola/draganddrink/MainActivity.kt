@@ -24,12 +24,13 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    val cardDeck = CardController()
+    private val cardDeck = CardController()
 
     private lateinit var drinkCard: ImageView
     private lateinit var gameCard: ImageView
     private lateinit var challengeCard: ImageView
     private lateinit var type: CardType
+    private lateinit var  playerFragment: PlayerFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,20 +46,10 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         drinkCard.setOnTouchListener(this)
         gameCard.setOnTouchListener(this)
         challengeCard.setOnTouchListener(this)
-
+        playerFragment = supportFragmentManager.findFragmentById(R.id.playerFrag) as PlayerFragment
         droPlace.setOnDragListener(this)
 
     }
-
-    fun mahTest() {
-        val articleFrag = supportFragmentManager.findFragmentById(R.id.playerFrag) as PlayerFragment?
-        articleFrag?.testPrint()
-
-    }
-
-
-
-
 
     override fun onDrag(view: View?, event: DragEvent?): Boolean {
         val action = event?.action
@@ -73,7 +64,7 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
             }
             DragEvent.ACTION_DROP -> {
                 this.cardDeck.showCard(this, this.type)
-                this.mahTest()
+                this.playerFragment.handleSwitchTurn()
                 return true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
