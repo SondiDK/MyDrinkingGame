@@ -36,10 +36,6 @@ class PlayerFragment : Fragment() {
     }
 
 
-  fun testPrint(){
-      Log.d("TAG", "message")
-    }
-
     fun handleSwitchTurn(){
         pm.switchTurn()
         playerName.text = pm.currentPlayer?.name

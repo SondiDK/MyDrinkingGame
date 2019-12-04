@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        droPlace.setBackgroundColor(Color.BLUE)
 
         //listerners on card
         drinkCard = findViewById(R.id.drinkCard) as ImageView
@@ -57,7 +56,7 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
             DragEvent.ACTION_DRAG_STARTED -> {
             }
             DragEvent.ACTION_DRAG_EXITED -> {
-                this.droPlace.setBackgroundColor(Color.BLUE)
+                this.droPlace.setBackgroundColor(Color.TRANSPARENT)
             }
             DragEvent.ACTION_DRAG_ENTERED -> {
                 this.droPlace.setBackgroundColor(Color.GREEN)
@@ -68,7 +67,7 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
                 return true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
-                this.droPlace.setBackgroundColor(Color.BLUE)
+                this.droPlace.setBackgroundColor(Color.TRANSPARENT)
                 return true
             }
             else -> {
