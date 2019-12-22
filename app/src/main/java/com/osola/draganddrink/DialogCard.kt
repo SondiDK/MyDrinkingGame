@@ -10,8 +10,15 @@ import android.view.LayoutInflater
 import com.osola.draganddrink.R
 import kotlinx.android.synthetic.main.login_dialog.*
 import kotlinx.android.synthetic.main.login_dialog.view.*
+import android.view.WindowManager
 
-class DialogCard  constructor(context: Context)  {
+
+
+
+
+class DialogCard
+
+constructor(context: Context)  {
  val acontext: Context
     init {
      acontext = context
@@ -20,22 +27,37 @@ class DialogCard  constructor(context: Context)  {
 
         val mDialogView = LayoutInflater.from(acontext).inflate(R.layout.login_dialog, null)
         //AlertDialogBuilder
-        val mBuilder = AlertDialog.Builder(acontext)
-                .setView(mDialogView)
+        val mBuilder = AlertDialog.Builder(acontext).setView(mDialogView)
+
 
         //show dialog
         val  mAlertDialog = mBuilder.show()
         mAlertDialog.dialogName.text = title
         mAlertDialog.dialogDescription.text = description
 
+        val layoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(mAlertDialog.getWindow()?.getAttributes())
+
+        val width = WindowManager.LayoutParams.WRAP_CONTENT
+        val height = WindowManager.LayoutParams.MATCH_PARENT
+
+        layoutParams.width = 700
+        layoutParams.height = height
+        mAlertDialog.getWindow()?.setAttributes(layoutParams)
+        mAlertDialog.window?.setBackgroundDrawable(null)
+        mAlertDialog.setCancelable(false)
+
+
+
+
         //login button click of custom layout
-        mDialogView.dialogLoginBtn.setOnClickListener {
+        mDialogView.buttonOk.setOnClickListener {
             //dismiss dialog
             mAlertDialog.dismiss()
 
         }
         //cancel button click of custom layout
-        mDialogView.dialogCancelBtn.setOnClickListener {
+        mDialogView.buttonNo.setOnClickListener {
             //dismiss dialog
             mAlertDialog.dismiss()
         }

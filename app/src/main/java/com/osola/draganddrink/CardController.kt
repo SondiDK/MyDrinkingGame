@@ -19,8 +19,14 @@ class CardController():  AppCompatActivity(){
         val card = cd.getCard(type)
 
         dialog.buildDialog(card?.title, card?.description).show()
-    }
 
+    }
+    fun showDialog() {
+       // val fragmentManager = supportFragmentManager
+        //val newFragment = CustomDialogFragment()
+            // The device is using a large layout, so show the fragment as a dialog
+         //   newFragment.show(fragmentManager, "dialog")
+    }
 
 }
 
