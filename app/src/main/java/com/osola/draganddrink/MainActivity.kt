@@ -49,6 +49,9 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         playerFragment = supportFragmentManager.findFragmentById(R.id.playerFrag) as PlayerFragment
         droPlace.setOnDragListener(this)
 
+        val names = intent.getStringArrayListExtra(PLAYER_NAMES_KEY)
+        Log.d("Hello", names.toString())
+
     }
 
     override fun onDrag(view: View?, event: DragEvent?): Boolean {

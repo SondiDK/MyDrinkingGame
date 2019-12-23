@@ -38,7 +38,6 @@ constructor(context: Context)  {
         val layoutParams = WindowManager.LayoutParams()
         layoutParams.copyFrom(mAlertDialog.getWindow()?.getAttributes())
 
-        val width = WindowManager.LayoutParams.WRAP_CONTENT
         val height = WindowManager.LayoutParams.MATCH_PARENT
 
         layoutParams.width = 700
