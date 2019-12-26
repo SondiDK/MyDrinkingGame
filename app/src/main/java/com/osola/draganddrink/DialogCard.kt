@@ -30,7 +30,7 @@ constructor(context: Context)  {
         val  mAlertDialog = mBuilder.show()
         mAlertDialog.dialogName.text = title
         mAlertDialog.dialogDescription.text = description
-        mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style2)
+       // mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style2)
 
         val layoutParams = WindowManager.LayoutParams()
         layoutParams.copyFrom(mAlertDialog.getWindow()?.getAttributes())

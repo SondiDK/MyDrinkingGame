@@ -32,12 +32,13 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
-            android:layout_width="match_parent"
+            app:layout_constraintWidth_percent="0.7"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/playerNames"
             app:layout_constraintBottom_toTopOf="@+id/droPlace"
-            android:id="@+id/linearLayoutCompat3">
+            android:id="@+id/linearLayoutCompat3" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent">
 
 
         <androidx.appcompat.widget.AppCompatImageView

@@ -7,6 +7,7 @@
         android:id="@+id/linearLayout">
 
     <TextView
+            android:fontFamily="@font/reem_kufi"
             android:text="Draw a card, "
             android:textColor="@android:color/black"
             android:textSize="23dp"
@@ -23,6 +24,7 @@
 
 
     <TextView
+            android:fontFamily="@font/reem_kufi"
             android:text="p name"
             android:textSize="23dp"
             android:id="@+id/player_name"
