@@ -16,7 +16,7 @@ class ChallengeCard: Card() {
 
     fun loadChallenges(){
 
-        challenges = arrayOf<String>(
+        challenges = arrayOf(
                 "Take a sip of someones drink",
                 "Do 10 push ups",
                 "Roll around for 10 seconds",
@@ -31,7 +31,6 @@ class ChallengeCard: Card() {
                 "Pretend a stranger is an old friend you just met",
                 "Convince someone they need your autograph",
                 "Give someone $1 ",
-                "Ask someone if they kno da wae",
                 "Sing your national anthem ",
                 "Call up a friend and tell them how excited you are about armpits.",
                 "Kiss everyone’s knees.",

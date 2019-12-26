@@ -43,22 +43,23 @@
         <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
                 android:src="@drawable/table"
-                android:layout_height="200dp"
+                android:layout_height="220dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
         <ImageView
                 android:id="@+id/drinkCard"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:src="@drawable/card_drink"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/challengeCard"/>
+                app:layout_constraintEnd_toStartOf="@+id/challengeCard" app:layout_constraintTop_toTopOf="parent"
+              />
 
         <ImageView
                 android:id="@+id/challengeCard"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:src="@drawable/card_challenge"
                 app:layout_constraintTop_toTopOf="@+id/drinkCard"
@@ -67,9 +68,9 @@
 
         <ImageView
                 android:id="@+id/gameCard"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="150dp"
-                android:src="@drawable/card_drink"
+                android:src="@drawable/gamecard"
                 app:layout_constraintTop_toTopOf="@+id/challengeCard"
                 app:layout_constraintStart_toEndOf="@+id/challengeCard"
                 app:layout_constraintEnd_toEndOf="parent"/>
@@ -78,7 +79,7 @@
     <LinearLayout
         android:id="@+id/droPlace"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"

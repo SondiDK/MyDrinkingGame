@@ -3,6 +3,7 @@ package com.osola.draganddrink
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -34,8 +35,9 @@ class AddPlayer : Fragment(){
     private val names = ArrayList<String>()
 
   private fun onAddClick() {
-      addedPlayers.setText(addPlayerName.text)
-      names.add(addPlayerName.text.toString())
+      this.names.add(addPlayerName.text.toString())
+
+      addedPlayers.setText(this.names.toString())
       addPlayerName.text.clear()
 
   }
@@ -52,6 +54,7 @@ class AddPlayer : Fragment(){
         }
 
         view.startGameBtn.setOnClickListener {
+            Log.d("starting", names.toString())
             activityCallback?.onButtonClick(names)
         }
 

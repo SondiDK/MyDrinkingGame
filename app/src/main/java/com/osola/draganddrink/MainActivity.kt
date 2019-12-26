@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
     private lateinit var  playerFragment: PlayerFragment
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         droPlace.setOnDragListener(this)
 
         val names = intent.getStringArrayListExtra(PLAYER_NAMES_KEY)
+        playerFragment.setPlayernames(names);
         Log.d("Hello", names.toString())
 
     }
@@ -67,7 +69,6 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
             }
             DragEvent.ACTION_DROP -> {
                 this.cardDeck.showCard(this, this.type)
-               //this.dialog.show(supportFragmentManager,"gift_dialog")
                 this.playerFragment.handleSwitchTurn()
                 return true
             }
