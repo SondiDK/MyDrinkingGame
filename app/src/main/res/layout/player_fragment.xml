@@ -13,8 +13,10 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             android:id="@+id/dialogName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/player_name">
 
     </TextView>
@@ -29,8 +31,10 @@
             android:textAlignment="center"
             android:textColor="@android:color/background_dark"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/dialogName" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintStart_toEndOf="@+id/dialogName"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

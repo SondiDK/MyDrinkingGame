@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.osola.draganddrink.Enums.CardType
@@ -31,7 +32,6 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
     private lateinit var challengeCard: ImageView
     private lateinit var type: CardType
     private lateinit var  playerFragment: PlayerFragment
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,20 +60,25 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         val action = event?.action
         when (action) {
             DragEvent.ACTION_DRAG_STARTED -> {
+                dragInfoView.visibility = View.VISIBLE
             }
             DragEvent.ACTION_DRAG_EXITED -> {
-                this.droPlace.setBackgroundColor(Color.TRANSPARENT)
+                dragInfoView.setBackgroundResource(R.drawable.dotted_border)
+
             }
             DragEvent.ACTION_DRAG_ENTERED -> {
-                this.droPlace.setBackgroundColor(Color.GREEN)
+                dragInfoView.setBackgroundResource(R.drawable.dotted_border_green)
             }
             DragEvent.ACTION_DROP -> {
                 this.cardDeck.showCard(this, this.type)
                 this.playerFragment.handleSwitchTurn()
+                dragInfoView.visibility = View.INVISIBLE
+
                 return true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
-                this.droPlace.setBackgroundColor(Color.TRANSPARENT)
+                dragInfoView.setBackgroundResource(R.drawable.dotted_border)
+                dragInfoView.visibility = View.INVISIBLE
                 return true
             }
             else -> {
