@@ -17,10 +17,10 @@ class CardController():  AppCompatActivity(){
         val card = cd.getCard(type)
 
 
-        dialog.buildDialog(card?.title, card?.description).show()
+        dialog.buildDialog(card?.title, card?.description, type).show()
+
         // HMm me no likey, alrdy have switch on kinda the same in getcard
         //maybe i can make like a gamemanager class.
-
         when(card) {
             is DrinkCard ->  return (card.sips)
         }

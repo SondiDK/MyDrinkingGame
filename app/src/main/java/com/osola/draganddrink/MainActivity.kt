@@ -50,6 +50,11 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         playerFragment = supportFragmentManager.findFragmentById(R.id.playerFrag) as PlayerFragment
         droPlace.setOnDragListener(this)
 
+        infoButoon.setOnClickListener{
+            val infoDialog = InfoDialog(this)
+            infoDialog.buildDialog().show()
+        }
+
         val names = intent.getStringArrayListExtra(PLAYER_NAMES_KEY)
         playerFragment.setPlayernames(names);
         Log.d("Hello", names.toString())

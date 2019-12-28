@@ -7,9 +7,7 @@ import android.view.LayoutInflater
 import kotlinx.android.synthetic.main.card_dialog.*
 import kotlinx.android.synthetic.main.card_dialog.view.*
 import android.view.WindowManager
-
-
-
+import com.osola.draganddrink.Enums.CardType
 
 
 class DialogCard
@@ -19,7 +17,7 @@ constructor(context: Context)  {
     init {
      acontext = context
  }
-    fun buildDialog(title: String?, description: String?): Dialog {
+    fun buildDialog(title: String?, description: String?, type: CardType): Dialog {
 
         val mDialogView = LayoutInflater.from(acontext).inflate(R.layout.card_dialog, null)
         //AlertDialogBuilder
@@ -27,10 +25,18 @@ constructor(context: Context)  {
 
 
         //show dialog
-        val  mAlertDialog = mBuilder.show()
+        val mAlertDialog = mBuilder.show()
         mAlertDialog.dialogName.text = title
         mAlertDialog.dialogDescription.text = description
-       // mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style2)
+
+        //todo also set bgimage
+        when(type){
+            CardType.DRINK -> mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style)
+            CardType.CHALLENGE -> mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_challenge)
+            CardType.GAME -> mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style)
+        }
+
+       // mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_challenge)
 
         val layoutParams = WindowManager.LayoutParams()
         layoutParams.copyFrom(mAlertDialog.getWindow()?.getAttributes())
@@ -44,17 +50,11 @@ constructor(context: Context)  {
         mAlertDialog.setCancelable(false)
 
 
-
-
-        //login button click of custom layout
         mDialogView.buttonOk.setOnClickListener {
-            //dismiss dialog
             mAlertDialog.dismiss()
 
         }
-        //cancel button click of custom layout
         mDialogView.buttonNo.setOnClickListener {
-            //dismiss dialog
             mAlertDialog.dismiss()
         }
 

@@ -4,8 +4,8 @@
 
     <gradient
             android:angle="270"
-            android:endColor="@android:color/holo_red_dark"
-            android:startColor="@android:color/holo_red_dark">
+            android:endColor="@color/challenge_color"
+            android:startColor="@color/challenge_color">
 </gradient>
     <corners
             android:topLeftRadius="21dp"

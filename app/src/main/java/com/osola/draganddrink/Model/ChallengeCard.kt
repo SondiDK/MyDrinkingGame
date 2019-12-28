@@ -1,22 +1,18 @@
 package com.osola.draganddrink.Model
 class ChallengeCard: Card() {
     override var title: String = "Challenge Card"
-    lateinit var challenges: Array<String>
     override var description: String = ""
-
     init {
-        this.loadChallenges()
         this.getRandomChallenge()
     }
 
     private fun getRandomChallenge(){
-        val ranNum =  (0..challenges.size-1).shuffled().first()
-        this.description = challenges[ranNum]
+        val ranNum =  (0..CardData.challenges.size-1).shuffled().first()
+        this.description = CardData.challenges[ranNum]
     }
 
-    fun loadChallenges(){
-
-        challenges = arrayOf(
+        object CardData {
+            var challenges = arrayOf(
                 "Take a sip of someones drink",
                 "Do 10 push ups",
                 "Roll around for 10 seconds",
@@ -47,10 +43,13 @@ class ChallengeCard: Card() {
                 "Call a random number and sing \"Happy Birthday.\"",
                 "Kiss the person to your right on the back of their neck",
                 "Snapchat a picture of your elbow and caption it: \"My favorite part of my body.\" ",
-                " Tape your mouth shut.", "Make a mask on your face using wet toilet paper. ",
+                "Tape your mouth shut.",
+                "Make a mask on your face using wet toilet paper. ",
                 "One by one, make up a title for each players’ movie about their life ",
                 "Lick mayonnaise off of someone's toe.",
                 "Pick up a random book and read it in the most seductive voice you can manage ",
-                "Take a naked selfie and send it to your partner.")
-    }
+                "Take a naked selfie and send it to your partner."
+            )
+        }
+
 }

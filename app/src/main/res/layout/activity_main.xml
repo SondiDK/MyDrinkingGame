@@ -15,10 +15,15 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+                android:id="@+id/infoButoon"
+                android:background="@drawable/info_icon"
+                android:layout_width="36dp" android:layout_height="36dp"/>
 
         <fragment android:name="com.osola.draganddrink.PlayerFragment"
                   android:id="@+id/playerFrag"
@@ -80,7 +85,7 @@
     <LinearLayout
 
             android:id="@+id/droPlace"
-            android:layout_width="300dp"
+            android:layout_width="200dp"
             android:layout_height="80dp"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal"
@@ -94,8 +99,8 @@
                 android:text="Draw here"
                 android:textColor="@android:color/black"
                 android:textAlignment="center"
-                android:textSize="23dp"
-
+                android:textSize="18dp"
+                android:fontFamily="@font/reem_kufi"
                 android:background="@drawable/dotted_border"
                 android:layout_width="match_parent" android:layout_height="match_parent"/>
 

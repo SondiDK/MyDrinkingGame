@@ -1,14 +1,12 @@
 package com.osola.draganddrink
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_add_player.*
 import kotlinx.android.synthetic.main.fragment_add_player.view.*
@@ -29,16 +27,20 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class AddPlayer : Fragment(){
+    private lateinit var startButton: Button
 
-    private lateinit var playerNames: TextView
     var activityCallback: Listener?  = null
     private val names = ArrayList<String>()
 
   private fun onAddClick() {
-      this.names.add(addPlayerName.text.toString())
+      this.names.add(addPlayerNameText.text.toString())
 
-      addedPlayers.setText(this.names.toString())
-      addPlayerName.text.clear()
+      addedPlayersView.setText(this.names.toString())
+      addPlayerNameText.text.clear()
+
+      if(this.names.size >= 2) {
+          this.toggleStartButton()
+      }
 
   }
 
@@ -49,21 +51,31 @@ class AddPlayer : Fragment(){
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_add_player, container, false)
 
+        startButton = view.startGameBtn
+
+        startButton.isEnabled = false
+        startButton.alpha = 0.1f
+
         view.addPlayerBtn.setOnClickListener{
             this.onAddClick()
         }
 
         view.startGameBtn.setOnClickListener {
-            Log.d("starting", names.toString())
             activityCallback?.onButtonClick(names)
         }
 
-        return  view
+        return view
     }
 
 
     fun setOnPlayerAddListener(callback: Listener ) {
         this.activityCallback = callback
+
+    }
+
+    private fun toggleStartButton() {
+        startGameBtn.isEnabled = true
+        startGameBtn.alpha = 1f
 
     }
 
