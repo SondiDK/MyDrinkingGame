@@ -57,7 +57,7 @@
                 android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/buttonOk"
+                android:id="@+id/buttonNot"
                 app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="22dp"/>
         <Button
@@ -68,7 +68,7 @@
                 android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/buttonNo"
+                android:id="@+id/buttonOk"
                 app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="22dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

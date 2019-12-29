@@ -15,7 +15,7 @@
 
     <TextView
             android:fontFamily="@font/reem_kufi"
-            android:text="Card descriptions"
+            android:text="Card Types"
             android:textSize="28dp"
             android:background="@drawable/info_title_style"
             android:textStyle="bold"

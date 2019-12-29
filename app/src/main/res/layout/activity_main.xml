@@ -21,11 +21,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-                android:id="@+id/infoButoon"
+                android:id="@+id/infoButton"
                 android:background="@drawable/info_icon"
                 android:layout_width="36dp" android:layout_height="36dp"/>
 
-        <fragment android:name="com.osola.draganddrink.PlayerFragment"
+        <fragment android:name="com.osola.draganddrink.Fragments.PlayerFragment"
                   android:id="@+id/playerFrag"
                   android:layout_weight="1"
                   android:layout_width="match_parent"
@@ -41,7 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/playerNames"
-            app:layout_constraintBottom_toTopOf="@+id/droPlace"
+            app:layout_constraintBottom_toTopOf="@+id/dropZone"
             android:id="@+id/linearLayoutCompat3" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent">
 
@@ -84,7 +84,7 @@
 
     <LinearLayout
 
-            android:id="@+id/droPlace"
+            android:id="@+id/dropZone"
             android:layout_width="200dp"
             android:layout_height="80dp"
             android:layout_marginBottom="8dp"
@@ -98,7 +98,7 @@
                 android:id="@+id/dragInfoView"
                 android:text="Draw here"
                 android:textColor="@android:color/black"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:textSize="18dp"
                 android:fontFamily="@font/reem_kufi"
                 android:background="@drawable/dotted_border"

@@ -1,4 +1,4 @@
-package com.osola.draganddrink
+package com.osola.draganddrink.Dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -8,35 +8,38 @@ import kotlinx.android.synthetic.main.card_dialog.*
 import kotlinx.android.synthetic.main.card_dialog.view.*
 import android.view.WindowManager
 import com.osola.draganddrink.Enums.CardType
+import com.osola.draganddrink.R
 
 
-class DialogCard
+class DialogCard(context: Context, callback: CardListener) {
 
-constructor(context: Context)  {
- val acontext: Context
-    init {
-     acontext = context
- }
+    private var activityCallback: CardListener = callback
+    private val acontext: Context = context
+
     fun buildDialog(title: String?, description: String?, type: CardType): Dialog {
 
         val mDialogView = LayoutInflater.from(acontext).inflate(R.layout.card_dialog, null)
-        //AlertDialogBuilder
         val mBuilder = AlertDialog.Builder(acontext).setView(mDialogView)
 
 
-        //show dialog
         val mAlertDialog = mBuilder.show()
         mAlertDialog.dialogName.text = title
         mAlertDialog.dialogDescription.text = description
 
-        //todo also set bgimage
-        when(type){
-            CardType.DRINK -> mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style)
-            CardType.CHALLENGE -> mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_challenge)
-            CardType.GAME -> mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style)
-        }
 
-       // mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_challenge)
+        when(type){
+            CardType.DRINK -> {
+                mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style)
+                mAlertDialog.cardBackgroundImage.setImageResource(R.drawable.pint)
+            }
+            CardType.CHALLENGE -> {
+                mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_challenge)
+                mAlertDialog.cardBackgroundImage.setImageResource(R.drawable.chal_icon)
+            }
+            CardType.GAME -> {
+                mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_game)
+            }
+        }
 
         val layoutParams = WindowManager.LayoutParams()
         layoutParams.copyFrom(mAlertDialog.getWindow()?.getAttributes())
@@ -45,20 +48,27 @@ constructor(context: Context)  {
 
         layoutParams.width = 700
         layoutParams.height = height
-        mAlertDialog.getWindow()?.setAttributes(layoutParams)
+        mAlertDialog.window?.attributes = layoutParams
         mAlertDialog.window?.setBackgroundDrawable(null)
         mAlertDialog.setCancelable(false)
 
 
         mDialogView.buttonOk.setOnClickListener {
             mAlertDialog.dismiss()
+            this.activityCallback.onCardClick(true)
 
         }
-        mDialogView.buttonNo.setOnClickListener {
+        mDialogView.buttonNot.setOnClickListener {
             mAlertDialog.dismiss()
+            this.activityCallback.onCardClick(false)
         }
 
         return mAlertDialog
     }
+
+    interface CardListener {
+        fun onCardClick(didIt: Boolean)
+    }
+
 }
 

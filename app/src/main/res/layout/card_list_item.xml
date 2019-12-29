@@ -22,12 +22,13 @@
             android:id="@+id/tv_card_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/card_list_image" android:layout_marginTop="8dp"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@id/card_list_image"
             app:layout_constraintTop_toTopOf="parent"/>
     <TextView
             android:fontFamily="@font/reem_kufi"
             android:text="card description"
+            android:textSize="18sp"
             android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

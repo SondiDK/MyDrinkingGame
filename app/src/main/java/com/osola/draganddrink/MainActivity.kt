@@ -1,29 +1,22 @@
 package com.osola.draganddrink
 
 import android.app.AlertDialog
-import android.app.FragmentManager
 import android.content.ClipData
-import android.content.ClipDescription
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.DragEvent
-import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import com.osola.draganddrink.Controllers.CardController
+import com.osola.draganddrink.Dialogs.DialogCard
+import com.osola.draganddrink.Dialogs.InfoDialog
 import com.osola.draganddrink.Enums.CardType
-import com.osola.draganddrink.R
+import com.osola.draganddrink.Fragments.PlayerFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListener, PlayerFragment.Listener {
-    override fun onButtonClick() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListener, DialogCard.CardListener, PlayerFragment.listenerGameOver {
 
     private val cardDeck = CardController()
 
@@ -47,19 +40,24 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         drinkCard.setOnTouchListener(this)
         gameCard.setOnTouchListener(this)
         challengeCard.setOnTouchListener(this)
-        playerFragment = supportFragmentManager.findFragmentById(R.id.playerFrag) as PlayerFragment
-        droPlace.setOnDragListener(this)
 
-        infoButoon.setOnClickListener{
+        playerFragment = supportFragmentManager.findFragmentById(R.id.playerFrag) as PlayerFragment
+        playerFragment.setGameOverListener(this)
+
+        dropZone.setOnDragListener(this)
+
+        infoButton.setOnClickListener{
             val infoDialog = InfoDialog(this)
-            infoDialog.buildDialog().show()
+            infoDialog.showDialog()
         }
 
         val names = intent.getStringArrayListExtra(PLAYER_NAMES_KEY)
         playerFragment.setPlayernames(names);
-        Log.d("Hello", names.toString())
+
 
     }
+
+
 
     override fun onDrag(view: View?, event: DragEvent?): Boolean {
         val action = event?.action
@@ -75,8 +73,7 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
                 dragInfoView.setBackgroundResource(R.drawable.dotted_border_green)
             }
             DragEvent.ACTION_DROP -> {
-                this.cardDeck.showCard(this, this.type)
-                this.playerFragment.handleSwitchTurn()
+                this.cardDeck.showCard(this, this.type, this) //todo set in constructer
                 dragInfoView.visibility = View.INVISIBLE
 
                 return true
@@ -108,5 +105,21 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         val data = ClipData.newPlainText("", "")
         view.startDragAndDrop(data, shadow, null, 0)
         return false
+    }
+
+    override fun onGameEnded(gameOver: Boolean) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Game over")
+        builder.setMessage("Round is over")
+        val dialog: AlertDialog = builder.create()
+
+
+        dialog.show()
+    }
+
+    override fun onCardClick(didIt: Boolean) {
+        playerFragment.addToPlayer(didIt)
+        playerFragment.handleSwitchTurn()
+
     }
 }
