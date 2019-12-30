@@ -2,6 +2,7 @@ package com.osola.draganddrink.Fragments
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,18 +12,17 @@ import com.osola.draganddrink.Controllers.PlayerManager
 import com.osola.draganddrink.R
 
 
-class PlayerFragment : Fragment() {
+class PlayerFragment : Fragment(), PlayerManager.ValueChangeListener {
 
 
-    private val pm = PlayerManager()
+    private val pm = PlayerManager(this)
     private lateinit var currentPlayerNameView: TextView
     private lateinit var roundView: TextView
     private var activityCallback: listenerGameOver?  = null
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        // Inflate the layout for this fragment
-     val view =  inflater.inflate(R.layout.player_fragment, container, false)
+        val view =  inflater.inflate(R.layout.player_fragment, container, false)
         
         currentPlayerNameView = view.findViewById(R.id.player_name)
         roundView = view.findViewById(R.id.tv_rounds)
@@ -37,7 +37,7 @@ class PlayerFragment : Fragment() {
             activityCallback?.onGameEnded(true)
         }
         currentPlayerNameView.text = pm.currentPlayer?.name
-        roundView.text = pm.numerOfRoundsPlayed.toString() + " / " + "10"
+        roundView.text = "${pm.numerOfRoundsPlayed} / 10"
     }
 
     fun setGameOverListener(callback: listenerGameOver) {
@@ -62,6 +62,12 @@ class PlayerFragment : Fragment() {
             this.pm.currentPlayer?.addToChallengesDenied()
         }
     }
+
+    override fun onValueChanged(newValue: Int) {
+        //hmm not sure if this is the way but kinda cool
+        Log.d("Changed", newValue.toString())
+    }
+
     interface listenerGameOver {
         fun onGameEnded(gameOver: Boolean)
     }

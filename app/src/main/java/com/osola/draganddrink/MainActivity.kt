@@ -113,7 +113,6 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         builder.setMessage("Round is over")
         val dialog: AlertDialog = builder.create()
 
-
         dialog.show()
     }
 

@@ -56,7 +56,7 @@ class InfoDialog(context: Context) {
             recyclerView.adapter = viewAdapter
 
 
-            val mAlertDialog = mBuilder.show()
+            val mAlertDialog = mBuilder.show() // or use create
             mAlertDialog.window?.setBackgroundDrawable(null)
 
         }
