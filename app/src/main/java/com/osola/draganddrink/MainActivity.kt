@@ -10,9 +10,11 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.osola.draganddrink.Controllers.CardController
 import com.osola.draganddrink.Dialogs.DialogCard
+import com.osola.draganddrink.Dialogs.GameOverDialog
 import com.osola.draganddrink.Dialogs.InfoDialog
 import com.osola.draganddrink.Enums.CardType
 import com.osola.draganddrink.Fragments.PlayerFragment
+import com.osola.draganddrink.Model.Player
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -107,13 +109,12 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         return false
     }
 
-    override fun onGameEnded(gameOver: Boolean) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Game over")
-        builder.setMessage("Round is over")
-        val dialog: AlertDialog = builder.create()
+    override fun onGameEnded(gameOver: Boolean, pussyPlayer: Player) {
+     val gameOverDialog = GameOverDialog(this)
 
-        dialog.show()
+        gameOverDialog.showDialog(pussyPlayer)
+
+
     }
 
     override fun onCardClick(didIt: Boolean) {

@@ -19,7 +19,7 @@ data class Player(val name: String)
     }
 
     fun addToChallengesDenied() {
-        this.challengesAccepted++
+        this.challengesDenied++
     }
 
     fun resetPlayerStats() {

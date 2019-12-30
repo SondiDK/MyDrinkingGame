@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import kotlinx.android.synthetic.main.card_dialog.*
 import kotlinx.android.synthetic.main.card_dialog.view.*
 import android.view.WindowManager
@@ -31,12 +32,15 @@ class DialogCard(context: Context, callback: CardListener) {
             CardType.DRINK -> {
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style)
                 mAlertDialog.cardBackgroundImage.setImageResource(R.drawable.pint)
+                mAlertDialog.buttonContainer.visibility = View.INVISIBLE
             }
             CardType.CHALLENGE -> {
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_challenge)
                 mAlertDialog.cardBackgroundImage.setImageResource(R.drawable.chal_icon)
+                mAlertDialog.setCancelable(false)
             }
             CardType.GAME -> {
+                mAlertDialog.buttonContainer.visibility = View.INVISIBLE
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_game)
             }
         }
@@ -50,7 +54,6 @@ class DialogCard(context: Context, callback: CardListener) {
         layoutParams.height = height
         mAlertDialog.window?.attributes = layoutParams
         mAlertDialog.window?.setBackgroundDrawable(null)
-        mAlertDialog.setCancelable(false)
 
 
         mDialogView.buttonOk.setOnClickListener {
