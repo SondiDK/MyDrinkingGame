@@ -1,6 +1,9 @@
 package com.osola.draganddrink.Fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +13,30 @@ import android.widget.ImageButton
 import com.osola.draganddrink.R
 import kotlinx.android.synthetic.main.fragment_add_player.*
 import kotlinx.android.synthetic.main.fragment_add_player.view.*
+import kotlin.math.log
 
 
-class AddPlayerFragment : Fragment() {
+class AddPlayerFragment : Fragment(), TextWatcher {
+    override fun afterTextChanged(p0: Editable?) {
+
+    }
+
+    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+    }
+
+    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+      if(p0?.toString()?.length!! > 0)  {
+          this.toggleRemoveOrAddButton(addButton, true)
+      }
+        else {
+          this.toggleRemoveOrAddButton(addButton, false)
+      }
+    }
 
     private lateinit var startButton: Button
     private lateinit var removeButton: ImageButton
+    private  lateinit var addButton: ImageButton
     private var activityCallback: Listener?  = null
     private val names = ArrayList<String>()
 
@@ -34,7 +55,13 @@ class AddPlayerFragment : Fragment() {
         startButton.alpha = 0.1f
 
         removeButton = view.removeBtn
-        this.toggleRemoveButton(false)
+        addButton = view.addPlayerBtn
+
+        this.toggleRemoveOrAddButton(removeButton,false)
+        this.toggleRemoveOrAddButton(addButton,false)
+
+
+        view.addPlayerNameText.addTextChangedListener(this)
 
         view.removeBtn.setOnClickListener {
             this.onRemoveClick()
@@ -62,7 +89,7 @@ class AddPlayerFragment : Fragment() {
         if(this.names.size >= 2) {
             this.toggleStartButton()
         }
-        this.toggleRemoveButton(true)
+        this.toggleRemoveOrAddButton(removeButton, true)
 
     }
 
@@ -81,7 +108,12 @@ class AddPlayerFragment : Fragment() {
         }
 
         if (names.isEmpty()) {
-            this.toggleRemoveButton(false)
+            this.toggleRemoveOrAddButton(removeButton,false)
+        }
+
+        if(this.names.size <= 2) {
+            startButton.isEnabled = false
+            startButton.alpha = 0.1f
         }
     }
 
@@ -96,14 +128,14 @@ class AddPlayerFragment : Fragment() {
 
     }
 
-    private fun toggleRemoveButton(enable: Boolean) {
+    private fun toggleRemoveOrAddButton(button: ImageButton, enable: Boolean) {
         if (enable) {
-            removeButton.isEnabled = true
-            removeButton.alpha = 1f
+            button.isEnabled = true
+            button.alpha = 1f
 
         } else {
-            removeButton.isEnabled = false
-            removeButton.alpha = 0.1f
+            button.isEnabled = false
+            button.alpha = 0.1f
         }
 
     }
