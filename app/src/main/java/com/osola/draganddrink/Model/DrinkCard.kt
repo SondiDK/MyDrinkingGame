@@ -5,7 +5,7 @@ import android.util.Log
 
 class DrinkCard: Card() {
 
-    override var title: String = "Drink Card"
+    override var title: String = "Drink"
     override var description: String = ""
     var sips: Int = 0
 

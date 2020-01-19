@@ -1,6 +1,6 @@
 package com.osola.draganddrink.Model
 class ChallengeCard: Card() {
-    override var title: String = "Challenge Card"
+    override var title: String = "Challenge"
     override var description: String = ""
 
     init {

@@ -1,7 +1,7 @@
 package com.osola.draganddrink.Model
 class GameCard: Card() {
 
-    override var title: String = "Game Card"
+    override var title: String = "Mini Game"
     override var description: String = ""
 
     init {
