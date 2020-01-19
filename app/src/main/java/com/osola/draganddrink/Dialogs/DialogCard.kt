@@ -10,6 +10,11 @@ import kotlinx.android.synthetic.main.card_dialog.view.*
 import android.view.WindowManager
 import com.osola.draganddrink.Enums.CardType
 import com.osola.draganddrink.R
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
+
+
+
 
 
 class DialogCard(context: Context, callback: CardListener) {
@@ -26,13 +31,16 @@ class DialogCard(context: Context, callback: CardListener) {
         val mAlertDialog = mBuilder.show()
         mAlertDialog.dialogName.text = title
         mAlertDialog.dialogDescription.text = description
-
-
+        val set = ConstraintSet()
+        val layout =  mAlertDialog.buttonContainer
+        set.clone(layout)
         when(type){
             CardType.DRINK -> {
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style)
                 mAlertDialog.cardBackgroundImage.setImageResource(R.drawable.pint)
-                mAlertDialog.buttonContainer.visibility = View.INVISIBLE
+                mAlertDialog.setCancelable(false)
+                //set.connect(mAlertDialog.buttonOk, ConstraintSet)
+                //mAlertDialog.buttonContainer.visibility = View.INVISIBLE
             }
             CardType.CHALLENGE -> {
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_challenge)
@@ -40,7 +48,8 @@ class DialogCard(context: Context, callback: CardListener) {
                 mAlertDialog.setCancelable(false)
             }
             CardType.GAME -> {
-                mAlertDialog.buttonContainer.visibility = View.INVISIBLE
+                //mAlertDialog.buttonContainer.visibility = View.INVISIBLE
+                mAlertDialog.setCancelable(false)
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_game)
             }
         }

@@ -31,12 +31,12 @@ class InfoDialog(context: Context) {
             var drink = DataWrapper(
                 "Drink card",
                 R.drawable.card_drink,
-                "You either chose who to drink or drink youself"
+                "Either you get to choose one to drink or you drink youself"
             )
             var challenge = DataWrapper(
                 "Challenge card",
                 R.drawable.card_challenge,
-                "Challenge - Do you dare?"
+                "Do you dare to pick a challenge?"
             )
             var game = DataWrapper(
                 "Game card",
