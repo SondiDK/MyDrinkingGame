@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.osola.draganddrink.Controllers.PlayerManager
+import com.osola.draganddrink.Dialogs.InfoDialog
 import com.osola.draganddrink.Model.Player
 import com.osola.draganddrink.R
+import kotlinx.android.synthetic.main.player_fragment.view.*
 
 
 class PlayerFragment : Fragment(), PlayerManager.ValueChangeListener {
@@ -24,7 +26,13 @@ class PlayerFragment : Fragment(), PlayerManager.ValueChangeListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view =  inflater.inflate(R.layout.player_fragment, container, false)
-        
+
+        view.infoButton.setOnClickListener{
+            val infoDialog = InfoDialog(context!!)
+            infoDialog.showDialog()
+        }
+
+
         currentPlayerNameView = view.findViewById(R.id.player_name)
         roundView = view.findViewById(R.id.tv_rounds)
         roundView.text = pm.numerOfRoundsPlayed.toString() + " / " + totalNumberOfRoundsPlayed

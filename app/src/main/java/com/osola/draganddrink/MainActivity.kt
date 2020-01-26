@@ -48,10 +48,7 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
 
         dropZone.setOnDragListener(this)
 
-        infoButton.setOnClickListener{
-            val infoDialog = InfoDialog(this)
-            infoDialog.showDialog()
-        }
+
 
         val names = intent.getStringArrayListExtra(PLAYER_NAMES_KEY)
         playerFragment.setPlayernames(names);
