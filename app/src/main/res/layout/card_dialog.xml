@@ -60,23 +60,18 @@
                 app:layout_constraintStart_toStartOf="parent"
         >
             <Button
-                    android:fontFamily="@font/reem_kufi"
+                    style="@style/buttonStyleCard"
                     android:text="no"
                     android:textAlignment="textStart"
-                    android:textSize="20dp"
-                    android:background="@android:color/transparent"
-                    android:textColor="@android:color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/buttonNot"
                     app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="22dp"/>
             <Button
-                    android:fontFamily="@font/reem_kufi"
+                    style="@style/buttonStyleCard"
                     android:text="alright"
-                    android:textSize="20dp"
-                    android:background="@android:color/transparent"
-                    android:textColor="@android:color/black"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/buttonOk"

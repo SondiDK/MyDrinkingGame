@@ -1,5 +1,6 @@
 package com.osola.draganddrink.Fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,8 +9,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.ImageButton
+import com.osola.draganddrink.PRELOAD_PLAYERS
 import com.osola.draganddrink.R
 import kotlinx.android.synthetic.main.fragment_add_player.*
 import kotlinx.android.synthetic.main.fragment_add_player.view.*
@@ -60,8 +63,9 @@ class AddPlayerFragment : Fragment(), TextWatcher {
         this.toggleRemoveOrAddButton(removeButton,false)
         this.toggleRemoveOrAddButton(addButton,false)
 
-
         view.addPlayerNameText.addTextChangedListener(this)
+
+
 
         view.removeBtn.setOnClickListener {
             this.onRemoveClick()
@@ -78,6 +82,11 @@ class AddPlayerFragment : Fragment(), TextWatcher {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        this.openSoftKeyboard(requireContext(), view.addPlayerNameText)
+        this.addForFasterTesting()
+    }
 
     private fun onAddClick() {
 
@@ -151,7 +160,29 @@ class AddPlayerFragment : Fragment(), TextWatcher {
         addPlayerNameText.text.clear()
     }
 
+    fun openSoftKeyboard(context: Context, view: View) {
+        view.requestFocus()
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+    }
 
+    private fun addForFasterTesting() {
+        if (PRELOAD_PLAYERS) {
+
+        val testNames = arrayOf("John", "Erik", "Kim")
+
+        for (name in testNames) {
+            this.addPlayerNameToView(name)
+            this.names.add(name)
+        }
+
+        if(this.names.size >= 2) {
+            this.toggleStartButton()
+        }
+
+        }
+
+    }
 
 
 }
