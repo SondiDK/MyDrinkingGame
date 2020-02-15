@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         playerFragment.setPlayernames(names);
 
 
+
     }
 
 
