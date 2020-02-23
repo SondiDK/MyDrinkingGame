@@ -81,9 +81,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
             android:id="@+id/dropZone"
-            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintWidth_percent="0.4"
             android:layout_height="0dp"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
@@ -93,7 +94,7 @@
                 android:visibility="invisible"
                 android:id="@+id/dragInfoView"
                 android:text="Draw here"
-                android:layout_margin="15dp"
+                android:layout_marginTop="50dp"
                 android:textColor="@android:color/black"
                 android:gravity="center"
                 android:textSize="22sp"
