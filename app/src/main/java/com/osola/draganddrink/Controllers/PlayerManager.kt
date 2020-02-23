@@ -47,4 +47,13 @@ class PlayerManager(listener: ValueChangeListener) {
        return playerList.maxBy { it.challengesDenied }
 
     }
+
+    fun resetAllPlayerStats() {
+
+        playerList.forEach{
+            it.resetPlayerStats()
+        }
+
+    }
+
 }

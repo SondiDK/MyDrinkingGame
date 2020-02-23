@@ -3,6 +3,7 @@ package com.osola.draganddrink
 import android.app.AlertDialog
 import android.content.ClipData
 import android.os.Bundle
+import android.util.Log
 import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
@@ -18,10 +19,12 @@ import com.osola.draganddrink.Model.Player
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListener, DialogCard.CardListener, PlayerFragment.listenerGameOver {
+class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListener,
+    DialogCard.CardListener, PlayerFragment.listenerGameOver, GameOverDialog.GameOverListener {
+
+
 
     private val cardDeck = CardController()
-
     private lateinit var drinkCard: ImageView
     private lateinit var gameCard: ImageView
     private lateinit var challengeCard: ImageView
@@ -32,7 +35,6 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         //listerners on card
         drinkCard = findViewById(R.id.drinkCard) as ImageView
@@ -48,12 +50,8 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
 
         dropZone.setOnDragListener(this)
 
-
-
         val names = intent.getStringArrayListExtra(PLAYER_NAMES_KEY)
         playerFragment.setPlayernames(names);
-
-
 
     }
 
@@ -108,10 +106,8 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
     }
 
     override fun onGameEnded(gameOver: Boolean, pussyPlayer: Player) {
-     val gameOverDialog = GameOverDialog(this)
-
+        val gameOverDialog = GameOverDialog(this, this)
         gameOverDialog.showDialog(pussyPlayer)
-
 
     }
 
@@ -120,4 +116,13 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         playerFragment.handleSwitchTurn()
 
     }
+
+    override fun onPlayAgainClick() {
+        this.playerFragment.playAgainWithSamePlayers()
+    }
+
+    override fun onBackToMenuClick() {
+        this.finish()
+    }
+
 }

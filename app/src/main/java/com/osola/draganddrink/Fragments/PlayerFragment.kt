@@ -70,6 +70,11 @@ class PlayerFragment : Fragment(), PlayerManager.ValueChangeListener {
         }
     }
 
+    fun playAgainWithSamePlayers() {
+        this.pm.resetAllPlayerStats()
+        this.pm.numerOfRoundsPlayed = 0
+    }
+
     override fun onValueChanged(newValue: Int) {
         roundView.text = "${pm.numerOfRoundsPlayed} / ${totalNumberOfRoundsPlayed}"
 

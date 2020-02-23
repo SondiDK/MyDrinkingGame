@@ -14,7 +14,7 @@
 >
 
     <TextView
-            android:layout_marginTop="8dp"
+
             android:fontFamily="@font/reem_kufi"
             android:text="Game Over"
             android:textSize="48dp"
@@ -55,27 +55,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-
+            android:layout_marginBottom="12dp"
     >
 
         <Button
                 style="@style/buttonStyleCard"
                 android:text="back to menu"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button"
+                android:layout_height="wrap_content" android:id="@+id/backToMenuButton"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintEnd_toStartOf="@+id/space" app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <Space android:layout_width="28dp" android:layout_height="wrap_content" android:id="@+id/space"
-               app:layout_constraintStart_toEndOf="@+id/button" app:layout_constraintHorizontal_bias="0.5"
-               app:layout_constraintEnd_toStartOf="@+id/button3" app:layout_constraintTop_toTopOf="parent"
+        <Space android:layout_width="48dp" android:layout_height="wrap_content" android:id="@+id/space"
+               app:layout_constraintStart_toEndOf="@+id/backToMenuButton" app:layout_constraintHorizontal_bias="0.5"
+               app:layout_constraintEnd_toStartOf="@+id/playAgainButton" app:layout_constraintTop_toTopOf="parent"
                app:layout_constraintBottom_toBottomOf="parent"/>
         <Button
                 android:layout_height="wrap_content"
                 style="@style/buttonStyleCard"
                 android:text="play again"
-                android:layout_width="wrap_content" android:id="@+id/button3"
+                android:layout_width="wrap_content" android:id="@+id/playAgainButton"
                 app:layout_constraintStart_toEndOf="@+id/space"
                 app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>

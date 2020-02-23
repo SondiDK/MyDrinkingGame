@@ -8,8 +8,11 @@ import com.osola.draganddrink.R
 import kotlinx.android.synthetic.main.gameover_dialog.view.*
 
 
-class GameOverDialog(context: Context) {
+class GameOverDialog(context: Context, callback: GameOverListener) {
+
     private val acontext: Context = context
+    private var activityCallback: GameOverListener = callback
+
 
     fun showDialog(pussyPlayer: Player) {
         val mDialogView = LayoutInflater.from(acontext).inflate(R.layout.gameover_dialog, null)
@@ -20,7 +23,24 @@ class GameOverDialog(context: Context) {
         mDialogView.challengesDeniedView.text = "they denied ${pussyPlayer.challengesDenied} challenges"
         val mAlertDialog = mBuilder.show() // or use create
         mAlertDialog.window?.setBackgroundDrawable(null)
+
+
+        mDialogView.playAgainButton.setOnClickListener{
+            mAlertDialog.dismiss()
+            this.activityCallback.onPlayAgainClick();
+        }
+
+        mDialogView.backToMenuButton.setOnClickListener{
+            mAlertDialog.dismiss()
+            this.activityCallback.onBackToMenuClick()
+        }
+
     }
 
 
+    interface GameOverListener {
+        fun onPlayAgainClick()
+        fun onBackToMenuClick()
+    }
 }
+
