@@ -19,11 +19,10 @@ class GameOverDialog(context: Context, callback: GameOverListener) {
 
         val mBuilder = AlertDialog.Builder(acontext).setView(mDialogView)
 
-        mDialogView.playerPussyTitle.text = "${pussyPlayer.name} is the biggest pussy"
-        mDialogView.challengesDeniedView.text = "they denied ${pussyPlayer.challengesDenied} challenges"
+        mDialogView.playerPussyTitle.text = "${pussyPlayer.name} is the biggest pussy!\nThey denied ${pussyPlayer.challengesDenied} challenges"
         val mAlertDialog = mBuilder.show() // or use create
         mAlertDialog.window?.setBackgroundDrawable(null)
-
+        mAlertDialog.setCancelable(false)
 
         mDialogView.playAgainButton.setOnClickListener{
             mAlertDialog.dismiss()
