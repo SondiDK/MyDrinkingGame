@@ -51,7 +51,9 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         dropZone.setOnDragListener(this)
 
         val names = intent.getStringArrayListExtra(PLAYER_NAMES_KEY)
+        val numberOfRounds = intent.getIntExtra(NUMBER_OF_ROUNDS, 10)
         playerFragment.setPlayernames(names);
+        playerFragment.setNumberOfRounds(numberOfRounds)
 
     }
 

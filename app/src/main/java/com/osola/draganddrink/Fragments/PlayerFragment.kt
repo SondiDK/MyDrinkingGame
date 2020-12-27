@@ -22,7 +22,7 @@ class PlayerFragment : Fragment(), PlayerManager.ValueChangeListener {
     private lateinit var currentPlayerNameView: TextView
     private lateinit var roundView: TextView
     private var activityCallback: listenerGameOver?  = null
-    private var totalNumberOfRoundsPlayed = 1
+    private var numberOfRoundsPlaying = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view =  inflater.inflate(R.layout.player_fragment, container, false)
@@ -35,7 +35,7 @@ class PlayerFragment : Fragment(), PlayerManager.ValueChangeListener {
 
         currentPlayerNameView = view.findViewById(R.id.player_name)
         roundView = view.findViewById(R.id.tv_rounds)
-        roundView.text = pm.numerOfRoundsPlayed.toString() + " / " + totalNumberOfRoundsPlayed
+
         return view
     }
 
@@ -62,6 +62,11 @@ class PlayerFragment : Fragment(), PlayerManager.ValueChangeListener {
         currentPlayerNameView.text = pm.currentPlayer?.name
     }
 
+    fun setNumberOfRounds(number: Int) {
+        this.numberOfRoundsPlaying = number
+        roundView.text = pm.numerOfRoundsPlayed.toString() + " / " + numberOfRoundsPlaying
+    }
+
     fun addToPlayer(didIt: Boolean){
         if (didIt) {
             this.pm.currentPlayer?.addToChallengesAccpted()
@@ -76,9 +81,9 @@ class PlayerFragment : Fragment(), PlayerManager.ValueChangeListener {
     }
 
     override fun onValueChanged(newValue: Int) {
-        roundView.text = "${pm.numerOfRoundsPlayed} / ${totalNumberOfRoundsPlayed}"
+        roundView.text = "${pm.numerOfRoundsPlayed} / ${numberOfRoundsPlaying}"
 
-        if(pm.numerOfRoundsPlayed == totalNumberOfRoundsPlayed){
+        if(pm.numerOfRoundsPlayed == numberOfRoundsPlaying){
             activityCallback?.onGameEnded(true, pm.getBiggestPussy()!!)
         }
         Log.d("Changed", newValue.toString())

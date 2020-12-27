@@ -10,11 +10,11 @@ import com.osola.draganddrink.Fragments.AddPlayerFragment
 class StartActivity : AppCompatActivity(), AddPlayerFragment.Listener {
 
 
-    override fun onButtonClick(playernames: ArrayList<String>) {
+    override fun onStartButtonClick(playernames: ArrayList<String>, numberOfRounds: Int) {
       Log.d("ARRAY", playernames.first())
         val mainact = Intent(this, MainActivity::class.java).apply {
             putExtra(PLAYER_NAMES_KEY, playernames)
-
+            putExtra(NUMBER_OF_ROUNDS, numberOfRounds);
         }
         startActivity(mainact)
     }

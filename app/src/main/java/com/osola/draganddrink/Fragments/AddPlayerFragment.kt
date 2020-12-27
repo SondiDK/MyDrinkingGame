@@ -4,19 +4,18 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import com.osola.draganddrink.PRELOAD_PLAYERS
 import com.osola.draganddrink.R
 import kotlinx.android.synthetic.main.fragment_add_player.*
 import kotlinx.android.synthetic.main.fragment_add_player.view.*
-import kotlin.math.log
 
 
 class AddPlayerFragment : Fragment(), TextWatcher {
@@ -40,11 +39,13 @@ class AddPlayerFragment : Fragment(), TextWatcher {
     private lateinit var startButton: Button
     private lateinit var removeButton: ImageButton
     private  lateinit var addButton: ImageButton
+    private lateinit var numberOfRoundsEt: EditText
     private var activityCallback: Listener?  = null
     private val names = ArrayList<String>()
+    private val numberOfRounds: Int = 0;
 
     interface Listener {
-        fun onButtonClick(playernames: ArrayList<String>)
+        fun onStartButtonClick(playernames: ArrayList<String>, numberOfRounds: Int)
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,12 +54,13 @@ class AddPlayerFragment : Fragment(), TextWatcher {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_add_player, container, false)
 
-        startButton = view.startGameBtn
-        startButton.isEnabled = false
-        startButton.alpha = 0.1f
+        this.startButton = view.startGameBtn
+        this.startButton.isEnabled = false
+        this.startButton.alpha = 0.1f
 
-        removeButton = view.removeBtn
-        addButton = view.addPlayerBtn
+        this.removeButton = view.removeBtn
+        this.addButton = view.addPlayerBtn
+        this.numberOfRoundsEt = view.numberofRoundsEt;
 
         this.toggleRemoveOrAddButton(removeButton,false)
         this.toggleRemoveOrAddButton(addButton,false)
@@ -76,7 +78,7 @@ class AddPlayerFragment : Fragment(), TextWatcher {
         }
 
         view.startGameBtn.setOnClickListener {
-            activityCallback?.onButtonClick(names)
+            activityCallback?.onStartButtonClick(names, this.numberOfRoundsEt.text.toString().toInt())
         }
 
         return view
