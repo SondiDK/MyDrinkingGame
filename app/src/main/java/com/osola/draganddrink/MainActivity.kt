@@ -12,8 +12,8 @@ import com.osola.draganddrink.Dialogs.DialogCard
 import com.osola.draganddrink.Dialogs.GameOverDialog
 import com.osola.draganddrink.Enums.CardType
 import com.osola.draganddrink.Fragments.PlayerFragment
-import com.osola.draganddrink.Model.CardResult
-import com.osola.draganddrink.Model.Player
+import com.osola.draganddrink.models.CardResult
+import com.osola.draganddrink.models.Player
 import com.osola.draganddrink.R.color.black
 import com.osola.draganddrink.R.color.game_color
 import kotlinx.android.synthetic.main.activity_main.*

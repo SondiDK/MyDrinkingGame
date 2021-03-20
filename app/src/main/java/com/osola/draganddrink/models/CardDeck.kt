@@ -1,8 +1,6 @@
-package com.osola.draganddrink.Model
+package com.osola.draganddrink.models
 
 import com.osola.draganddrink.Enums.CardType
-
-import java.util.*
 
 class CardDeck {
 

@@ -4,8 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import com.osola.draganddrink.Dialogs.DialogCard
 import com.osola.draganddrink.Enums.CardType
-import com.osola.draganddrink.Model.CardDeck
-import com.osola.draganddrink.Model.DrinkCard
+import com.osola.draganddrink.models.CardDeck
 
 
 class CardController():  AppCompatActivity(){

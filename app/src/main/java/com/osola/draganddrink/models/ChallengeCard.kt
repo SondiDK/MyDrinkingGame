@@ -1,4 +1,4 @@
-package com.osola.draganddrink.Model
+package com.osola.draganddrink.models
 class ChallengeCard: Card() {
     override var title: String = "Challenge"
     override var description: String = ""

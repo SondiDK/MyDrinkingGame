@@ -5,9 +5,7 @@ import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.WindowManager
-import androidx.constraintlayout.widget.ConstraintSet
-import com.osola.draganddrink.Enums.CardType
-import com.osola.draganddrink.Model.*
+import com.osola.draganddrink.models.*
 import com.osola.draganddrink.R
 import kotlinx.android.synthetic.main.card_dialog.*
 import kotlinx.android.synthetic.main.card_dialog.view.*

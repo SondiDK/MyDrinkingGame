@@ -1,6 +1,6 @@
 package com.osola.draganddrink.Controllers
 
-import com.osola.draganddrink.Model.Player
+import com.osola.draganddrink.models.Player
 import kotlin.properties.Delegates
 
 /**

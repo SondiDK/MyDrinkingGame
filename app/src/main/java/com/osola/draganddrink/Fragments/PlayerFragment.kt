@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.osola.draganddrink.Controllers.PlayerManager
 import com.osola.draganddrink.Dialogs.InfoDialog
-import com.osola.draganddrink.Model.CardResult
-import com.osola.draganddrink.Model.Player
+import com.osola.draganddrink.models.CardResult
+import com.osola.draganddrink.models.Player
 import com.osola.draganddrink.R
 import kotlinx.android.synthetic.main.player_fragment.view.*
 

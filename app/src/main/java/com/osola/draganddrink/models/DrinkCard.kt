@@ -1,4 +1,4 @@
-package com.osola.draganddrink.Model
+package com.osola.draganddrink.models
 
 import android.util.Log
 
@@ -31,8 +31,5 @@ class DrinkCard: Card() {
             this.description = "Pick one to drink " + this.sips + " sips"
         }
     }
-
-
-
 
 }

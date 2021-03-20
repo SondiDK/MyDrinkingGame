@@ -1,4 +1,4 @@
-package com.osola.draganddrink.Model
+package com.osola.draganddrink.models
 /**
  * Created by Oliver on 07-10-2018.
  */

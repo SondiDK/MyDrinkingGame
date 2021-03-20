@@ -3,7 +3,7 @@ package com.osola.draganddrink.Dialogs
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
-import com.osola.draganddrink.Model.Player
+import com.osola.draganddrink.models.Player
 import com.osola.draganddrink.R
 import kotlinx.android.synthetic.main.gameover_dialog.view.*
 
