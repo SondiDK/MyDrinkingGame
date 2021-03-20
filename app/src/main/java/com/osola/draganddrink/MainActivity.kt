@@ -17,6 +17,8 @@ import com.osola.draganddrink.Enums.CardType
 import com.osola.draganddrink.Fragments.PlayerFragment
 import com.osola.draganddrink.Model.CardResult
 import com.osola.draganddrink.Model.Player
+import com.osola.draganddrink.R.color.black
+import com.osola.draganddrink.R.color.game_color
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -68,10 +70,12 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
             }
             DragEvent.ACTION_DRAG_EXITED -> {
                 dragInfoView.setBackgroundResource(R.drawable.dotted_border)
+                dragInfoView.setTextColor(resources.getColor(black, null))
 
             }
             DragEvent.ACTION_DRAG_ENTERED -> {
                 dragInfoView.setBackgroundResource(R.drawable.dotted_border_green)
+                dragInfoView.setTextColor(resources.getColor(game_color, null))
             }
             DragEvent.ACTION_DROP -> {
                 this.cardDeck.showCard(this, this.type, this) //todo set in constructer

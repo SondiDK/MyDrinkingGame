@@ -9,4 +9,5 @@
     <color name ="info_color">#E6EEF4</color>
     <color name ="challenge_color">#680497</color>
     <color name ="game_color">#1AA57B</color>
+    <color name="black">#000000</color>
         </resources>

@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.osola.draganddrink.Controllers.PlayerManager
 import com.osola.draganddrink.Dialogs.InfoDialog
+import com.osola.draganddrink.Model.CardResult
 import com.osola.draganddrink.Model.Player
 import com.osola.draganddrink.R
 import kotlinx.android.synthetic.main.player_fragment.view.*
@@ -87,6 +88,10 @@ class PlayerFragment : Fragment(), PlayerManager.ValueChangeListener {
             activityCallback?.onGameEnded(true, pm.getBiggestPussy()!!)
         }
         Log.d("Changed", newValue.toString())
+    }
+
+    fun handleCardResult(result: CardResult) { // todo handle the card result as in if the player did it and amount of sips etc. this should replace addtoplayer
+
     }
 
     interface listenerGameOver {
