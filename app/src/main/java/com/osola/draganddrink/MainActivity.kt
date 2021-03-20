@@ -15,6 +15,7 @@ import com.osola.draganddrink.Dialogs.GameOverDialog
 import com.osola.draganddrink.Dialogs.InfoDialog
 import com.osola.draganddrink.Enums.CardType
 import com.osola.draganddrink.Fragments.PlayerFragment
+import com.osola.draganddrink.Model.CardResult
 import com.osola.draganddrink.Model.Player
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -37,23 +38,23 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
         setContentView(R.layout.activity_main)
 
         //listerners on card
-        drinkCard = findViewById(R.id.drinkCard) as ImageView
-        gameCard = findViewById(R.id.gameCard) as ImageView
-        challengeCard = findViewById(R.id.challengeCard) as ImageView
+        this.drinkCard = findViewById(R.id.drinkCard) as ImageView
+        this.gameCard = findViewById(R.id.gameCard) as ImageView
+        this.challengeCard = findViewById(R.id.challengeCard) as ImageView
 
-        drinkCard.setOnTouchListener(this)
-        gameCard.setOnTouchListener(this)
-        challengeCard.setOnTouchListener(this)
+        this.drinkCard.setOnTouchListener(this)
+        this.gameCard.setOnTouchListener(this)
+        this.challengeCard.setOnTouchListener(this)
 
-        playerFragment = supportFragmentManager.findFragmentById(R.id.playerFrag) as PlayerFragment
-        playerFragment.setGameOverListener(this)
+        this.playerFragment = supportFragmentManager.findFragmentById(R.id.playerFrag) as PlayerFragment
+        this.playerFragment.setGameOverListener(this)
 
         dropZone.setOnDragListener(this)
 
         val names = intent.getStringArrayListExtra(PLAYER_NAMES_KEY)
         val numberOfRounds = intent.getIntExtra(NUMBER_OF_ROUNDS, 10)
-        playerFragment.setPlayernames(names);
-        playerFragment.setNumberOfRounds(numberOfRounds)
+        this.playerFragment.setPlayernames(names);
+        this.playerFragment.setNumberOfRounds(numberOfRounds)
 
     }
 
@@ -113,9 +114,9 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
 
     }
 
-    override fun onCardClick(didIt: Boolean) {
-        playerFragment.addToPlayer(didIt)
-        playerFragment.handleSwitchTurn()
+    override fun onCardClick(result: CardResult) {
+        this.playerFragment.addToPlayer(result.acceptedCard)
+        this.playerFragment.handleSwitchTurn()
 
     }
 

@@ -12,9 +12,7 @@ import com.osola.draganddrink.Enums.CardType
 import com.osola.draganddrink.R
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-
-
-
+import com.osola.draganddrink.Model.CardResult
 
 
 class DialogCard(context: Context, callback: CardListener) {
@@ -31,6 +29,7 @@ class DialogCard(context: Context, callback: CardListener) {
         val mAlertDialog = mBuilder.show()
         mAlertDialog.dialogName.text = title
         mAlertDialog.dialogDescription.text = description
+        mAlertDialog.setCancelable(false)
         val set = ConstraintSet()
         val layout =  mAlertDialog.buttonContainer
         set.clone(layout)
@@ -38,18 +37,14 @@ class DialogCard(context: Context, callback: CardListener) {
             CardType.DRINK -> {
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style)
                 mAlertDialog.cardBackgroundImage.setImageResource(R.drawable.pint)
-                mAlertDialog.setCancelable(false)
                 //set.connect(mAlertDialog.buttonOk, ConstraintSet)
                 //mAlertDialog.buttonContainer.visibility = View.INVISIBLE
             }
             CardType.CHALLENGE -> {
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_challenge)
                 mAlertDialog.cardBackgroundImage.setImageResource(R.drawable.chal_icon)
-                mAlertDialog.setCancelable(false)
             }
             CardType.GAME -> {
-                //mAlertDialog.buttonContainer.visibility = View.INVISIBLE
-                mAlertDialog.setCancelable(false)
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_game)
             }
         }
@@ -67,20 +62,21 @@ class DialogCard(context: Context, callback: CardListener) {
 
         mDialogView.buttonOk.setOnClickListener {
             mAlertDialog.dismiss()
-            this.activityCallback.onCardClick(true)
+            this.activityCallback.onCardClick( CardResult(true, null))
 
         }
         mDialogView.buttonNot.setOnClickListener {
             mAlertDialog.dismiss()
-            this.activityCallback.onCardClick(false)
+            this.activityCallback.onCardClick(CardResult(false, null))
         }
 
         return mAlertDialog
     }
 
     interface CardListener {
-        fun onCardClick(didIt: Boolean)
+        fun onCardClick(result: CardResult)
     }
+
 
 }
 

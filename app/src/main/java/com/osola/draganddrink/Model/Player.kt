@@ -4,9 +4,9 @@ package com.osola.draganddrink.Model
  */
 data class Player(val name: String)
 {
-     var sipsTotal: Int = 0
-     var challengesAccepted: Int = 0
-     var challengesDenied: Int = 0
+     private var sipsTotal: Int = 0
+     private var challengesAccepted: Int = 0
+     var challengesDenied = 0
 
 
     fun addSips(sips: Int){
