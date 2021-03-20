@@ -2,8 +2,11 @@ package com.osola.draganddrink.Model
 
 import android.util.Log
 
+private const val MAX_SIPS = 6;
+private const val MIN_SIPS = 2
 
 class DrinkCard: Card() {
+
 
     override var title: String = "Drink"
     override var description: String = ""
@@ -15,7 +18,7 @@ class DrinkCard: Card() {
     }
 
     private fun generateSips() {
-        this.sips = (2..6).shuffled().first()
+        this.sips = (MIN_SIPS..MAX_SIPS).shuffled().first()
     }
 
     private fun chooseDrinker() {
@@ -28,6 +31,8 @@ class DrinkCard: Card() {
             this.description = "Pick one to drink " + this.sips + " sips"
         }
     }
+
+
 
 
 }

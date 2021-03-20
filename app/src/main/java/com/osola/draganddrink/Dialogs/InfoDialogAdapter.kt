@@ -42,5 +42,4 @@ class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
 }
 
 
-data class DataWrapper(val name: String, val image: Int, val description: String) {
-}
+data class DataWrapper(val name: String, val image: Int, val description: String)

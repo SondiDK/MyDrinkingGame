@@ -2,14 +2,12 @@ package com.osola.draganddrink.Dialogs
 
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.osola.draganddrink.R
-
 import kotlinx.android.synthetic.main.info_dialog.view.*
 
 

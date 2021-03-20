@@ -55,7 +55,7 @@ class PlayerFragment : Fragment(), PlayerManager.ValueChangeListener {
 
     fun setPlayernames(names: ArrayList<String>) {
         for (name in names) {
-            pm.addPlayer(name);
+            pm.addPlayer(name)
 
         }
 

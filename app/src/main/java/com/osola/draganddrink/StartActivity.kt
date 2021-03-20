@@ -14,7 +14,7 @@ class StartActivity : AppCompatActivity(), AddPlayerFragment.Listener {
       Log.d("ARRAY", playernames.first())
         val mainact = Intent(this, MainActivity::class.java).apply {
             putExtra(PLAYER_NAMES_KEY, playernames)
-            putExtra(NUMBER_OF_ROUNDS, numberOfRounds);
+            putExtra(NUMBER_OF_ROUNDS, numberOfRounds)
         }
         startActivity(mainact)
     }

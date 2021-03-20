@@ -1,9 +1,7 @@
 package com.osola.draganddrink
 
-import android.app.AlertDialog
 import android.content.ClipData
 import android.os.Bundle
-import android.util.Log
 import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
@@ -12,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.osola.draganddrink.Controllers.CardController
 import com.osola.draganddrink.Dialogs.DialogCard
 import com.osola.draganddrink.Dialogs.GameOverDialog
-import com.osola.draganddrink.Dialogs.InfoDialog
 import com.osola.draganddrink.Enums.CardType
 import com.osola.draganddrink.Fragments.PlayerFragment
 import com.osola.draganddrink.Model.CardResult
@@ -55,7 +52,7 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
 
         val names = intent.getStringArrayListExtra(PLAYER_NAMES_KEY)
         val numberOfRounds = intent.getIntExtra(NUMBER_OF_ROUNDS, 10)
-        this.playerFragment.setPlayernames(names);
+        this.playerFragment.setPlayernames(names)
         this.playerFragment.setNumberOfRounds(numberOfRounds)
 
     }
@@ -80,12 +77,12 @@ class MainActivity : AppCompatActivity(), View.OnDragListener, View.OnTouchListe
             DragEvent.ACTION_DROP -> {
                 this.cardDeck.showCard(this, this.type, this) //todo set in constructer
                 dragInfoView.visibility = View.INVISIBLE
-
                 return true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
                 dragInfoView.setBackgroundResource(R.drawable.dotted_border)
                 dragInfoView.visibility = View.INVISIBLE
+                dragInfoView.setTextColor(resources.getColor(black, null))
                 return true
             }
             else -> {

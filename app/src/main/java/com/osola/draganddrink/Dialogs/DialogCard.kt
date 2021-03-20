@@ -4,15 +4,13 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
+import android.view.WindowManager
+import androidx.constraintlayout.widget.ConstraintSet
+import com.osola.draganddrink.Enums.CardType
+import com.osola.draganddrink.Model.*
+import com.osola.draganddrink.R
 import kotlinx.android.synthetic.main.card_dialog.*
 import kotlinx.android.synthetic.main.card_dialog.view.*
-import android.view.WindowManager
-import com.osola.draganddrink.Enums.CardType
-import com.osola.draganddrink.R
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
-import com.osola.draganddrink.Model.CardResult
 
 
 class DialogCard(context: Context, callback: CardListener) {
@@ -20,31 +18,27 @@ class DialogCard(context: Context, callback: CardListener) {
     private var activityCallback: CardListener = callback
     private val acontext: Context = context
 
-    fun buildDialog(title: String?, description: String?, type: CardType): Dialog {
+    fun buildDialog(card: Card): Dialog {
 
         val mDialogView = LayoutInflater.from(acontext).inflate(R.layout.card_dialog, null)
         val mBuilder = AlertDialog.Builder(acontext).setView(mDialogView)
 
 
         val mAlertDialog = mBuilder.show()
-        mAlertDialog.dialogName.text = title
-        mAlertDialog.dialogDescription.text = description
+        mAlertDialog.dialogName.text = card.title
+        mAlertDialog.dialogDescription.text = card.description
         mAlertDialog.setCancelable(false)
-        val set = ConstraintSet()
-        val layout =  mAlertDialog.buttonContainer
-        set.clone(layout)
-        when(type){
-            CardType.DRINK -> {
+
+        when (card) {
+             is DrinkCard -> {
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_style)
                 mAlertDialog.cardBackgroundImage.setImageResource(R.drawable.pint)
-                //set.connect(mAlertDialog.buttonOk, ConstraintSet)
-                //mAlertDialog.buttonContainer.visibility = View.INVISIBLE
             }
-            CardType.CHALLENGE -> {
+           is ChallengeCard -> {
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_challenge)
                 mAlertDialog.cardBackgroundImage.setImageResource(R.drawable.chal_icon)
             }
-            CardType.GAME -> {
+            is GameCard -> {
                 mAlertDialog.dialogName.setBackgroundResource(R.drawable.card_title_game)
             }
         }
@@ -58,7 +52,6 @@ class DialogCard(context: Context, callback: CardListener) {
         layoutParams.height = height
         mAlertDialog.window?.attributes = layoutParams
         mAlertDialog.window?.setBackgroundDrawable(null)
-
 
         mDialogView.buttonOk.setOnClickListener {
             mAlertDialog.dismiss()

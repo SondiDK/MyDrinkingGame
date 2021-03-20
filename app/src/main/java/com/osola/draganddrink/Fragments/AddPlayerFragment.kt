@@ -42,7 +42,7 @@ class AddPlayerFragment : Fragment(), TextWatcher {
     private lateinit var numberOfRoundsEt: EditText
     private var activityCallback: Listener?  = null
     private val names = ArrayList<String>()
-    private val numberOfRounds: Int = 0;
+    private val numberOfRounds: Int = 0
 
     interface Listener {
         fun onStartButtonClick(playernames: ArrayList<String>, numberOfRounds: Int)
@@ -60,7 +60,7 @@ class AddPlayerFragment : Fragment(), TextWatcher {
 
         this.removeButton = view.removeBtn
         this.addButton = view.addPlayerBtn
-        this.numberOfRoundsEt = view.numberofRoundsEt;
+        this.numberOfRoundsEt = view.numberofRoundsEt
 
         this.toggleRemoveOrAddButton(removeButton,false)
         this.toggleRemoveOrAddButton(addButton,false)

@@ -26,7 +26,7 @@ class GameOverDialog(context: Context, callback: GameOverListener) {
 
         mDialogView.playAgainButton.setOnClickListener{
             mAlertDialog.dismiss()
-            this.activityCallback.onPlayAgainClick();
+            this.activityCallback.onPlayAgainClick()
         }
 
         mDialogView.backToMenuButton.setOnClickListener{
